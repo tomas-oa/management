@@ -1,22 +1,17 @@
 const express = require('express');
-const { config } = require('dotenv');
+require('dotenv').config();
 const { graphqlHTTP } = require('express-graphql');
+const schema = require('./schema/schema');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(
   '/graphql',
   graphqlHTTP({
-    schema: schema,
-    rootValue: root,
-    graphiql: true,
+    schema,
+    graphiql: process.env.NODE_ENV === 'development' ? true : false,
   })
 );
-
-app.use('/', (req, res) => {
-  res.send('Hello World!');
-  console.log('owo');
-});
 
 app.listen(PORT, () => {
   console.log('Listening on port 3000');
