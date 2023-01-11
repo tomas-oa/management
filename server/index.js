@@ -1,10 +1,15 @@
 const express = require('express');
 require('dotenv').config();
 const { graphqlHTTP } = require('express-graphql');
+const morgan = require('morgan');
 const schema = require('./schema/schema');
-const app = express();
 const PORT = process.env.PORT || 3000;
+const db = require('./config/db');
+const app = express();
 
+db();
+
+app.use(morgan('dev'));
 app.use(
   '/graphql',
   graphqlHTTP({
@@ -14,5 +19,5 @@ app.use(
 );
 
 app.listen(PORT, () => {
-  console.log('Listening on port 3000');
+  console.log('express en puerto 3000');
 });
