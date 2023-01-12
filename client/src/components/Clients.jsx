@@ -18,7 +18,6 @@ function Clients() {
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Delete</th>
               <th></th>
             </tr>
           </thead>
