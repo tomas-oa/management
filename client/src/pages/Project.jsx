@@ -1,5 +1,9 @@
 function Project() {
-  return <></>;
+  return (
+    <div>
+      Project
+    </div>
+  );
 }
 
 export default Project;
